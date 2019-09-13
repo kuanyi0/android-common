@@ -1,4 +1,4 @@
-package com.yikuan.androidcommon.library;
+package com.yikuan.androidcommon;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.yikuan.androidcommon.library.test", appContext.getPackageName());
+        assertEquals("com.yikuan.androidcommon.test", appContext.getPackageName());
     }
 }

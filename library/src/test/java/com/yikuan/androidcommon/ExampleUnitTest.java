@@ -1,4 +1,4 @@
-package com.yikuan.androidcommon.library;
+package com.yikuan.androidcommon;
 
 import org.junit.Test;
 

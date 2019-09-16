@@ -11,7 +11,7 @@ public class AndroidCommon {
     private static Application sApplication;
 
     private AndroidCommon() {
-        throw new UnsupportedOperationException("cannot instantiate.");
+        throw new UnsupportedOperationException("cannot be instantiated.");
     }
 
     public static void init(Context context) {
@@ -22,6 +22,9 @@ public class AndroidCommon {
     }
 
     public static Application getApp() {
+        if (sApplication == null) {
+            throw new NullPointerException("u need to init first.");
+        }
         return sApplication;
     }
 }

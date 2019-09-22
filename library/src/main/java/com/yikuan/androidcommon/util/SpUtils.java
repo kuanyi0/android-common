@@ -24,13 +24,13 @@ public class SpUtils {
     private static final String DEFAULT_STRING = null;
     private static final Set<String> DEFAULT_STRING_SET = null;
 
-    private SpUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
-    }
-
-    static{
+    static {
         sPreferences = PreferenceManager.getDefaultSharedPreferences(AndroidCommon.getApp());
         sEditor = sPreferences.edit();
+    }
+
+    private SpUtils() {
+        throw new UnsupportedOperationException("cannot be instantiated.");
     }
 
     public static void setBoolean(String key, boolean value) {

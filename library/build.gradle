@@ -27,19 +27,19 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:28.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.google.code.gson:gson:2.8.5'
 }
 
 publish {
-    userOrg = 'kimyi' //在https://bintray.com上注册的用户名
-    groupId = 'com.kimyi' //jCenter上的路径
-    artifactId = 'android-common' //要上传的library名称
-    publishVersion = '0.1.1' //library的版本号
-    desc = 'android common library' //library的简单描述
-    website = 'https://github.com/isyikuan/android-common' //library的开源地址，例如在github上的地址
+    userOrg = 'kimyi'
+    groupId = 'com.kimyi'
+    artifactId = 'android-common'
+    publishVersion = '0.1.1'
+    desc = 'android common library'
+    website = 'https://github.com/isyikuan/android-common' 
 }

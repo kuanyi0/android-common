@@ -39,7 +39,7 @@ publish {
     userOrg = 'kimyi'
     groupId = 'com.kimyi'
     artifactId = 'android-common'
-    publishVersion = '0.1.1'
+    publishVersion = '0.1.2'
     desc = 'android common library'
     website = 'https://github.com/isyikuan/android-common' 
 }

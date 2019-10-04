@@ -1,4 +1,4 @@
-package com.yikuan.androidcommon.base.mvp.noleak;
+package com.yikuan.androidcommon.base.mvp.softview;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;

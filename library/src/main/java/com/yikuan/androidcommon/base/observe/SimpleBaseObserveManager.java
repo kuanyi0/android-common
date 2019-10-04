@@ -15,7 +15,7 @@ public class SimpleBaseObserveManager extends BaseObserveManager<SimpleContract.
     }
 
     @Override
-    protected SimpleContract.SimpleObservable createObserve() {
+    protected SimpleContract.SimpleObservable createObservable() {
         return new SimpleContract.SimpleObservable();
     }
 }

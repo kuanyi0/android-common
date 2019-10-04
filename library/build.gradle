@@ -10,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 13
+        versionName "0.1.3"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -39,7 +39,7 @@ publish {
     userOrg = 'kimyi'
     groupId = 'com.kimyi'
     artifactId = 'android-common'
-    publishVersion = '0.1.2'
+    publishVersion = '0.1.3'
     desc = 'android common library'
     website = 'https://github.com/isyikuan/android-common' 
 }

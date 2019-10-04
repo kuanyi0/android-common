@@ -8,7 +8,7 @@ public abstract class BaseObserveManager<T extends BaseObserver, V extends BaseO
     protected final V mObservable;
 
     protected BaseObserveManager() {
-        mObservable = createObserve();
+        mObservable = createObservable();
     }
 
     public void registerObserver(T observer) {
@@ -27,6 +27,6 @@ public abstract class BaseObserveManager<T extends BaseObserver, V extends BaseO
         mObservable.notifyChanged();
     }
 
-    protected abstract V createObserve();
+    protected abstract V createObservable();
 
 }

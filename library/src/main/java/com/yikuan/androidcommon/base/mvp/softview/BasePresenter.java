@@ -1,4 +1,4 @@
-package com.yikuan.androidcommon.base.mvp.noleak;
+package com.yikuan.androidcommon.base.mvp.softview;
 
 import java.lang.ref.Reference;
 import java.lang.ref.SoftReference;

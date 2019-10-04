@@ -1,7 +1,6 @@
 package com.yikuan.androidcommon.util;
 
 import android.content.SharedPreferences;
-import android.preference.Preference;
 import android.preference.PreferenceManager;
 
 import com.yikuan.androidcommon.AndroidCommon;

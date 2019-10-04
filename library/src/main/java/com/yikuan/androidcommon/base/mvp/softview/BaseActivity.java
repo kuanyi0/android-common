@@ -1,4 +1,4 @@
-package com.yikuan.androidcommon.base.mvp.noleak;
+package com.yikuan.androidcommon.base.mvp.softview;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

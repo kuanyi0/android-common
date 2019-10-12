@@ -2,7 +2,7 @@ package com.yikuan.androidcommon.base.mvp;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 /**
  * Simple activity handle view and presenter

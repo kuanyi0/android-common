@@ -40,8 +40,10 @@ public class PermissionUtils {
         return true;
     }
 
-
-    public class PermissionActivity extends AppCompatActivity {
+    /**
+     * just to example
+     */
+    private class PermissionActivity extends AppCompatActivity {
         private static final int REQUEST_CODE = 0;
         private String permission = null;
 

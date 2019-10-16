@@ -69,11 +69,11 @@ public class JsonUtils {
         return getValue(jsonObject, key, TYPE_DOUBLE, 0);
     }
 
-    public static int getString(String json, String key) {
+    public static String getString(String json, String key) {
         return getValue(json, key, TYPE_STRING, null);
     }
 
-    public static int getString(JSONObject jsonObject, String key) {
+    public static String getString(JSONObject jsonObject, String key) {
         return getValue(jsonObject, key, TYPE_BOOLEAN, null);
     }
 

@@ -93,10 +93,10 @@ public class FileUtils {
             throw new NullPointerException("dir cannot be null.");
         }
         if (!dir.exists()) {
-            throw new IllegalArgumentException(dir + " does not exist");
+            throw new IllegalArgumentException(dir + " does not exist.");
         }
         if (!dir.isDirectory()) {
-            throw new IllegalArgumentException(dir + " is not a directory");
+            throw new IllegalArgumentException(dir + " is not a directory.");
         }
 
         File[] files = dir.listFiles();
@@ -189,7 +189,7 @@ public class FileUtils {
             throw new NullPointerException("file cannot be null.");
         }
         if (!file.exists()) {
-            throw new IllegalArgumentException(file + " does not exist");
+            throw new IllegalArgumentException(file + " does not exist.");
         }
         if (file.isDirectory()) {
             return sizeOfDir(file);
@@ -221,10 +221,10 @@ public class FileUtils {
             throw new NullPointerException("dir cannot be null.");
         }
         if (!dir.exists()) {
-            throw new IllegalArgumentException(dir + " does not exist");
+            throw new IllegalArgumentException(dir + " does not exist.");
         }
         if (!dir.isDirectory()) {
-            throw new IllegalArgumentException(dir + " is not a directory");
+            throw new IllegalArgumentException(dir + " is not a directory.");
         }
     }
 
@@ -263,16 +263,16 @@ public class FileUtils {
         return file.renameTo(dest);
     }
 
-    public static void copy(File file, String path) throws IOException {
-        File dest = new File(path);
+    public static void copy(File src, File dest) throws IOException {
         FileChannel inputChannel = null;
         FileChannel outputChannel = null;
         try {
-            inputChannel = openInputStream(file).getChannel();
+            inputChannel = openInputStream(src).getChannel();
             outputChannel = openOutputStream(dest).getChannel();
             outputChannel.transferFrom(inputChannel, 0, inputChannel.size());
         } finally {
             IoUtils.close(inputChannel, outputChannel);
         }
     }
+
 }

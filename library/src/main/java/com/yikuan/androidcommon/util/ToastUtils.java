@@ -17,7 +17,6 @@ public class ToastUtils {
     private static Handler sHandler;
 
     static {
-        sToast = new Toast(AndroidCommon.getApp());
         sHandler = new Handler(Looper.getMainLooper());
     }
 
@@ -31,6 +30,13 @@ public class ToastUtils {
 
     public static void showLong(@StringRes final int resId, Object... args) {
         show(resId, Toast.LENGTH_LONG, args);
+    }
+
+    public static void cancel() {
+        if (sToast != null) {
+            sToast.cancel();
+            sToast = null;
+        }
     }
 
     public static void showShortSafely(@StringRes final int resId, final Object... args) {
@@ -51,8 +57,18 @@ public class ToastUtils {
         });
     }
 
-    public static void cancel() {
-        sToast.cancel();
+    /**
+     * cancel toast by handler post
+     * @see #showShortSafely(int, Object...)
+     * @see #showLongSafely(int, Object...)
+     */
+    public static void cancelSurely() {
+        sHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                cancel();
+            }
+        });
     }
 
     private static void show(@StringRes final int resId, int duration, Object... args) {
@@ -60,9 +76,8 @@ public class ToastUtils {
     }
 
     private static void show(CharSequence text, int duration) {
-        sToast.cancel();
-        sToast.setText(text);
-        sToast.setDuration(duration);
+        cancel();
+        sToast = Toast.makeText(AndroidCommon.getApp(), text, duration);
         sToast.show();
     }
 }

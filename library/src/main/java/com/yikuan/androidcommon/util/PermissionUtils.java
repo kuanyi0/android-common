@@ -52,7 +52,7 @@ public class PermissionUtils {
             super.onCreate(savedInstanceState);
 
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
-                // todo: show an explanation to user, don't block this thread,
+                // TODO: show an explanation to user, don't block this thread,
                 //  after explanation, try again to request the permission.
             } else {
                 ActivityCompat.requestPermissions(this, new String[]{permission}, REQUEST_CODE);
@@ -64,9 +64,9 @@ public class PermissionUtils {
             switch (requestCode) {
                 case REQUEST_CODE:
                     if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                        // todo: permission was granted.
+                        // TODO: permission was granted.
                     } else {
-                        // todo: permission was denied.
+                        // TODO: permission was denied.
                     }
                     break;
                 default:

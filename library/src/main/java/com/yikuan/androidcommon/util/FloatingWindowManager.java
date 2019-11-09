@@ -29,7 +29,8 @@ public class FloatingWindowManager {
                 0, 0,
                 PixelFormat.TRANSPARENT);
         mLayoutParams.type = getType();
-        mLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+        mLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE |
+                WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
         mLayoutParams.gravity = Gravity.START | Gravity.TOP;
         mLayoutParams.x = 0;
         mLayoutParams.y = 0;
@@ -41,6 +42,18 @@ public class FloatingWindowManager {
 
     public void addView(View view) {
         mWindowManager.addView(view, mLayoutParams);
+    }
+
+    public void addView(View view, ViewGroup.LayoutParams params) {
+        mWindowManager.addView(view, params);
+    }
+
+    public void updateViewLayout(View view) {
+        mWindowManager.updateViewLayout(view, mLayoutParams);
+    }
+
+    public void updateViewLayout(View view, ViewGroup.LayoutParams params) {
+        mWindowManager.updateViewLayout(view, params);
     }
 
     public void removeView(View view) {

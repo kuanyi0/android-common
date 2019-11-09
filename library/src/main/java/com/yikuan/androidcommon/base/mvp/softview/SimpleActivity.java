@@ -14,7 +14,7 @@ public class SimpleActivity extends BaseActivity<SimpleContract.SimpleView, Simp
 
     @Override
     public void showSomething() {
-        // todo show something
+        // TODO: show something
         mPresenter.doSomething();
     }
 }

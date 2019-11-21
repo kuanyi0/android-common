@@ -41,7 +41,7 @@ public class PermissionUtils {
     }
 
     /**
-     * just to example
+     * Just to example
      */
     private class PermissionActivity extends AppCompatActivity {
         private static final int REQUEST_CODE = 0;

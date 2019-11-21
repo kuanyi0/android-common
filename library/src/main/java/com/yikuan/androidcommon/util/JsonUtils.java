@@ -106,7 +106,6 @@ public class JsonUtils {
         }
     }
 
-
     @SuppressWarnings("unchecked")
     private static <T> T getValue(JSONObject jsonObject, String key, int type, T defValue) {
         if (jsonObject == null || TextUtils.isEmpty(key)) {

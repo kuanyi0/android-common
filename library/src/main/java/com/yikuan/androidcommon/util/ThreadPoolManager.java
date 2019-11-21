@@ -46,7 +46,7 @@ public class ThreadPoolManager {
         }
     };
 
-    private static class instance {
+    private static class Instance {
         private static final ThreadPoolManager INSTANCE = new ThreadPoolManager();
     }
 
@@ -56,7 +56,7 @@ public class ThreadPoolManager {
     }
 
     public static ThreadPoolManager getInstance() {
-        return instance.INSTANCE;
+        return Instance.INSTANCE;
     }
 
     public void execute(Runnable runnable) {

@@ -49,7 +49,6 @@ public class PathUtils {
     }
 
 
-
     public static String getExternalStoragePath() {
         checkExternalStorageState();
         return getAbsolutePath(Environment.getExternalStorageDirectory());

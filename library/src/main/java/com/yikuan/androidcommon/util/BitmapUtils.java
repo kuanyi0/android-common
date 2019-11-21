@@ -17,7 +17,7 @@ public class BitmapUtils {
     /**
      *
      * @param view whole shown
-     * @return
+     * @return bitmap
      */
     public static Bitmap createBitmapByShownView(View view) {
         view.buildDrawingCache();
@@ -27,7 +27,7 @@ public class BitmapUtils {
     /**
      *
      * @param view partial shown
-     * @return
+     * @return bitmap
      */
     public static Bitmap createBitmapByPartialShownView(View view) {
         Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
@@ -36,6 +36,13 @@ public class BitmapUtils {
         return bitmap;
     }
 
+    /**
+     *
+     * @param view hidden
+     * @param width bitmap width
+     * @param height bitmap height
+     * @return bitmap
+     */
     public static Bitmap createBitmapByHiddenView(View view, int width, int height) {
         int measuredWidth = View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY);
         int measuredHeight = View.MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.EXACTLY);

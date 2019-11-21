@@ -18,7 +18,7 @@ public class FloatingWindowManager {
     private WindowManager mWindowManager;
     private WindowManager.LayoutParams mLayoutParams;
 
-    private static class instance {
+    private static class Instance {
         private static final FloatingWindowManager INSTANCE = new FloatingWindowManager();
     }
 
@@ -37,7 +37,7 @@ public class FloatingWindowManager {
     }
 
     public static FloatingWindowManager getInstance() {
-        return instance.INSTANCE;
+        return Instance.INSTANCE;
     }
 
     public void addView(View view) {

@@ -24,31 +24,21 @@ public class NetworkUtils {
 
     public static boolean isConnected() {
         NetworkInfo networkInfo = sConnectivityManager.getActiveNetworkInfo();
-        checkNetworkInfo(networkInfo);
-        return networkInfo.isAvailable() && networkInfo.isConnected();
+        return networkInfo != null && networkInfo.isAvailable() && networkInfo.isConnected();
     }
 
     public static boolean isWifiConnected() {
         NetworkInfo networkInfo = sConnectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        checkNetworkInfo(networkInfo);
-        return networkInfo.isAvailable() && networkInfo.isConnected();
+        return networkInfo != null &&networkInfo.isAvailable() && networkInfo.isConnected();
     }
 
     public static boolean isMobileConnected() {
         NetworkInfo networkInfo = sConnectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-        checkNetworkInfo(networkInfo);
-        return networkInfo.isAvailable() && networkInfo.isConnected();
+        return networkInfo != null &&networkInfo.isAvailable() && networkInfo.isConnected();
     }
 
     public static int getConnectedType() {
         NetworkInfo networkInfo = sConnectivityManager.getActiveNetworkInfo();
-        checkNetworkInfo(networkInfo);
-        return networkInfo.getType();
-    }
-
-    private static void checkNetworkInfo(NetworkInfo networkInfo) {
-        if (networkInfo == null) {
-            throw new RuntimeException("failed to get network info.");
-        }
+        return networkInfo == null ? -1 : networkInfo.getType();
     }
 }

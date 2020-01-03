@@ -17,8 +17,8 @@ class App : Application() {
 
     override fun onCreate() {
     	...
-		AndroidCommon.init(this)
-		...
+	AndroidCommon.init(this)
+	...
     }
 }
 ```

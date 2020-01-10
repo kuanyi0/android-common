@@ -1,4 +1,4 @@
-package com.yikuan.androidcommon.base.mvp.softview;
+package com.yikuan.androidcommon.base.mvp2;
 
 import java.lang.ref.Reference;
 import java.lang.ref.SoftReference;

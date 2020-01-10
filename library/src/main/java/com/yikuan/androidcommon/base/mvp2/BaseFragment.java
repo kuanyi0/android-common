@@ -1,4 +1,4 @@
-package com.yikuan.androidcommon.base.mvp.softview;
+package com.yikuan.androidcommon.base.mvp2;
 
 import android.content.Context;
 import androidx.fragment.app.Fragment;

@@ -60,7 +60,7 @@ public class FloatingWindowManager {
         mWindowManager.removeView(view);
     }
 
-    private int getType() {
+    public int getType() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             return WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
         } else {

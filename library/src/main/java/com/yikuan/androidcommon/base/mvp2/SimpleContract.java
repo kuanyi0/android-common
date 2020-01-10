@@ -1,4 +1,4 @@
-package com.yikuan.androidcommon.base.mvp.softview;
+package com.yikuan.androidcommon.base.mvp2;
 
 /**
  * @author yikuan

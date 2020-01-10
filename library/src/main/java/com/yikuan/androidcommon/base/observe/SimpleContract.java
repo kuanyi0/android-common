@@ -12,7 +12,6 @@ public class SimpleContract {
     public static class SimpleObservable extends BaseObservable<SimpleObserver> {
         /**
          * 被观察者发布通知
-         * @param arg
          */
         public void notifySimpleChanged(String arg) {
             synchronized (mObservers) {
@@ -29,7 +28,6 @@ public class SimpleContract {
     public interface SimpleObserver extends BaseObserver {
         /**
          * 观察者收到通知后调用
-         * @param arg
          */
         void onSimpleChanged(String arg);
     }

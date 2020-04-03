@@ -5,7 +5,9 @@ apply plugin: 'com.novoda.bintray-release'
 android {
     compileSdkVersion 29
 
-
+    lintOptions {
+        abortOnError false
+    }
 
     defaultConfig {
         minSdkVersion 15

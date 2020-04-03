@@ -17,7 +17,6 @@ public class PathUtils {
     }
 
     /**
-     *
      * @return /system
      */
     public static String getRootPath() {
@@ -25,7 +24,6 @@ public class PathUtils {
     }
 
     /**
-     *
      * @return /data
      */
     public static String getDataPath() {
@@ -33,17 +31,22 @@ public class PathUtils {
     }
 
     /**
-     *
-     * @return /cache
+     * @return /data/cache
      */
     public static String getDownloadCachePath() {
         return getAbsolutePath(Environment.getDownloadCacheDirectory());
     }
 
+    /**
+     * @return /data/data/package/cache
+     */
     public static String getInternalAppCachePath() {
         return getAbsolutePath(AndroidCommon.getApp().getCacheDir());
     }
 
+    /**
+     * @return /data/data/package/files
+     */
     public static String getInternalAppFilesPath() {
         return getAbsolutePath(AndroidCommon.getApp().getFilesDir());
     }

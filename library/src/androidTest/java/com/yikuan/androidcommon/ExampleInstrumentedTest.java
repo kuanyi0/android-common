@@ -1,10 +1,12 @@
 package com.yikuan.androidcommon;
 
 import android.content.Context;
-import androidx.test.platform.app.InstrumentationRegistry;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
+
+import androidx.test.InstrumentationRegistry;
+import androidx.test.runner.AndroidJUnit4;
 
 import com.yikuan.androidcommon.util.LogUtils;
+import com.yikuan.androidcommon.util.PathUtils;
 import com.yikuan.androidcommon.util.ScreenUtils;
 
 import org.junit.Test;
@@ -21,6 +23,11 @@ import static org.junit.Assert.*;
 public class ExampleInstrumentedTest {
     private static final String TAG = "ExampleInstrumentedTest";
 
+    public ExampleInstrumentedTest() {
+        Context appContext = InstrumentationRegistry.getTargetContext();
+        AndroidCommon.init(appContext);
+    }
+
     @Test
     public void useAppContext() {
         // Context of the app under test.
@@ -31,8 +38,11 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void testScreenUtils() {
-        Context appContext = InstrumentationRegistry.getTargetContext();
-        AndroidCommon.init(appContext);
         LogUtils.d(TAG, "" + ScreenUtils.getScreenHeight());
+    }
+
+    @Test
+    public void testPathUtils() {
+        LogUtils.d(TAG, PathUtils.getInternalAppFilesPath());
     }
 }

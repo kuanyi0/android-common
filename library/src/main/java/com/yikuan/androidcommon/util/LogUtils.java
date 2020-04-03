@@ -71,6 +71,4 @@ public class LogUtils {
             Log.wtf(tag, msg);
         }
     }
-
-
 }

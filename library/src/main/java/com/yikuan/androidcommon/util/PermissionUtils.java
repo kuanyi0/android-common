@@ -1,8 +1,12 @@
 package com.yikuan.androidcommon.util;
 
 import android.app.Application;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 
 import com.yikuan.androidcommon.AndroidCommon;
 
@@ -40,10 +44,42 @@ public class PermissionUtils {
         return true;
     }
 
+    public static boolean isDrawOverlaysGranted() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return Settings.canDrawOverlays(sContext);
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean isWriteSettingsGranted() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return Settings.System.canWrite(sContext);
+        } else {
+            return false;
+        }
+    }
+
+    public static void requestDrawOverlays() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
+            intent.setData(Uri.parse("package:" + sContext.getPackageName()));
+            sContext.startActivity(intent);
+        }
+    }
+
+    public static void requestWriteSettings() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
+            intent.setData(Uri.parse("package:" + sContext.getPackageName()));
+            sContext.startActivity(intent);
+        }
+    }
+
     /**
      * Just to example
      */
-    private class PermissionActivity extends AppCompatActivity {
+    private static class PermissionActivity extends AppCompatActivity {
         private static final int REQUEST_CODE = 0;
         private String permission = null;
 

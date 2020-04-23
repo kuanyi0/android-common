@@ -5,7 +5,6 @@ import android.graphics.PixelFormat;
 import android.os.Build;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 
 import com.yikuan.androidcommon.AndroidCommon;
@@ -25,7 +24,7 @@ public class FloatingWindowManager {
     private FloatingWindowManager() {
         mWindowManager = (WindowManager) AndroidCommon.getApp().getSystemService(Context.WINDOW_SERVICE);
         mLayoutParams = new WindowManager.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT,
                 0, 0,
                 PixelFormat.TRANSPARENT);
         mLayoutParams.type = getType();
@@ -44,7 +43,7 @@ public class FloatingWindowManager {
         mWindowManager.addView(view, mLayoutParams);
     }
 
-    public void addView(View view, ViewGroup.LayoutParams params) {
+    public void addView(View view, WindowManager.LayoutParams params) {
         mWindowManager.addView(view, params);
     }
 
@@ -52,7 +51,7 @@ public class FloatingWindowManager {
         mWindowManager.updateViewLayout(view, mLayoutParams);
     }
 
-    public void updateViewLayout(View view, ViewGroup.LayoutParams params) {
+    public void updateViewLayout(View view, WindowManager.LayoutParams params) {
         mWindowManager.updateViewLayout(view, params);
     }
 

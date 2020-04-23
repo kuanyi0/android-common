@@ -29,12 +29,12 @@ public class NetworkUtils {
 
     public static boolean isWifiConnected() {
         NetworkInfo networkInfo = sConnectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        return networkInfo != null &&networkInfo.isAvailable() && networkInfo.isConnected();
+        return networkInfo != null && networkInfo.isAvailable() && networkInfo.isConnected();
     }
 
     public static boolean isMobileConnected() {
         NetworkInfo networkInfo = sConnectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-        return networkInfo != null &&networkInfo.isAvailable() && networkInfo.isConnected();
+        return networkInfo != null && networkInfo.isAvailable() && networkInfo.isConnected();
     }
 
     public static int getConnectedType() {

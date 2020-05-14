@@ -86,12 +86,15 @@ public class PermissionUtils {
         @Override
         protected void onCreate(@Nullable Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
-                // TODO: show an explanation to user, don't block this thread,
-                //  after explanation, try again to request the permission.
+            if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
+                    // TODO: show an explanation to user, don't block this thread,
+                    //  after explanation, try again to request the permission.
+                } else {
+                    ActivityCompat.requestPermissions(this, new String[]{permission}, REQUEST_CODE);
+                }
             } else {
-                ActivityCompat.requestPermissions(this, new String[]{permission}, REQUEST_CODE);
+                // Permission has already been granted
             }
         }
 

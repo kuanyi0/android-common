@@ -6,7 +6,7 @@ package com.yikuan.androidcommon.base.mvp;
  */
 public class SimpleContract {
 
-    // presenter implementation, it can be implemented out of SimpleContract.
+    // Presenter implementation, it can be implemented out of SimpleContract.
     public static class SimplePresenter implements Presenter {
         private View mView;
 
@@ -27,7 +27,7 @@ public class SimpleContract {
         }
     }
 
-    // view implementation, it can be implemented by Activity、Fragment、Widget.
+    // View implementation, it can be implemented by Activity、Fragment、Widget.
     public static class SimpleView implements View {
         private Presenter mPresenter;
 

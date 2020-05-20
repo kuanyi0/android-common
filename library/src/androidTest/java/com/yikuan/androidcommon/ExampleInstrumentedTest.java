@@ -43,6 +43,6 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void testPathUtils() {
-        LogUtils.d(TAG, PathUtils.getInternalAppFilesPath());
+        LogUtils.d(TAG, PathUtils.getDownloadCachePath());
     }
 }

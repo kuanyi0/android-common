@@ -52,7 +52,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
     private void dumpException2File(Throwable e) throws IOException {
         String path = PathUtils.getExternalAppFilesPath();
         if (path.isEmpty()) {
-            LogUtils.d(TAG,"external storage unmounted");
+            LogUtils.d(TAG, "external storage unmounted");
             return;
         }
         File dir = FileUtils.getFile(path, DIR);

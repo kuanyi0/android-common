@@ -1,8 +1,11 @@
 package com.yikuan.androidcommon.util;
 
-import androidx.annotation.IntDef;
+import android.os.Process;
 import android.util.Log;
 
+import androidx.annotation.IntDef;
+
+import java.io.File;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
@@ -11,6 +14,10 @@ import java.lang.annotation.RetentionPolicy;
  * @date 2019/09/22
  */
 public class LogUtils {
+    private static final String TAG = "LogUtils";
+    private static final String DIR = "log";
+    private static java.lang.Process sProcess;
+
     public static final int VERBOSE = 1;
     public static final int DEBUG = 2;
     public static final int INFO = 3;
@@ -70,5 +77,33 @@ public class LogUtils {
         if (sLevel <= ASSERT) {
             Log.wtf(tag, msg);
         }
+    }
+
+    public static void startDump2File() {
+        String externalAppFilesPath = PathUtils.getExternalAppFilesPath();
+        if (externalAppFilesPath.isEmpty()) {
+            LogUtils.d(TAG, "external storage unmounted");
+            return;
+        }
+        File dir = FileUtils.getFile(externalAppFilesPath, DIR);
+        try {
+            FileUtils.forceMkdir(dir);
+            String fileName = TimeUtils.formatFileName();
+            File file = FileUtils.getFile(dir, fileName);
+            if (!file.exists() && !file.createNewFile()) {
+                LogUtils.d(TAG, "fail to create log file");
+                return;
+            }
+            String path = file.getAbsolutePath();
+            Runtime runtime = Runtime.getRuntime();
+            runtime.exec("logcat -c");
+            sProcess = runtime.exec("logcat -f " + path + " --pid=" + Process.myPid());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void stopDump2File() {
+        sProcess.destroy();
     }
 }

@@ -88,13 +88,13 @@ public class PermissionUtils {
             super.onCreate(savedInstanceState);
             if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
-                    // TODO: show an explanation to user, don't block this thread,
-                    //  after explanation, try again to request the permission.
+                    // Show an explanation to user, don't block this thread, after explanation,
+                    // try again to request the permission.
                 } else {
                     ActivityCompat.requestPermissions(this, new String[]{permission}, REQUEST_CODE);
                 }
             } else {
-                // Permission has already been granted
+                // Permission has already been granted.
             }
         }
 
@@ -103,9 +103,9 @@ public class PermissionUtils {
             switch (requestCode) {
                 case REQUEST_CODE:
                     if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                        // TODO: permission was granted.
+                        // Permission was granted.
                     } else {
-                        // TODO: permission was denied.
+                        // Permission was denied.
                     }
                     break;
                 default:

@@ -17,13 +17,13 @@ public class SimpleContract {
 
         @Override
         public void doSomething() {
-            // TODO: something
+            // TODO: Something.
             mView.showSomething();
         }
 
         @Override
         public void onDestroy() {
-            // TODO: something on view destroy
+            // TODO: Something on view destroy.
         }
     }
 
@@ -33,13 +33,13 @@ public class SimpleContract {
 
         @Override
         public void showSomething() {
-            // TODO: show something
+            // TODO: Show something.
             mPresenter.doSomething();
         }
 
         @Override
         public void setPresenter(Presenter presenter) {
-            // TODO: set SimplePresenter on view create
+            // TODO: Set SimplePresenter on view create.
             mPresenter = presenter;
         }
     }

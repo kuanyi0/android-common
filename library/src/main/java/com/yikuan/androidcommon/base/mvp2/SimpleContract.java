@@ -7,7 +7,7 @@ package com.yikuan.androidcommon.base.mvp2;
 public class SimpleContract {
     public static class SimplePresenter extends BasePresenter<SimpleView> {
         void doSomething() {
-            // TODO: something
+            // TODO: Something.
             getView().showSomething();
         }
     }

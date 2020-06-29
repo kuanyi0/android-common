@@ -61,7 +61,6 @@ public class TimeUtils {
                 }
             }
         }
-
         return threadLocal.get();
     }
 

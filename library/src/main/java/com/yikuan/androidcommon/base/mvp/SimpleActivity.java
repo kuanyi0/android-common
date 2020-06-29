@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 
 /**
- * Simple activity handle view and presenter
+ * Simple activity handle view and presenter.
  *
  * @author yikuan
  * @date 2019/09/13

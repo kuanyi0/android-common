@@ -58,7 +58,8 @@ public class ToastUtils {
     }
 
     /**
-     * Cancel toast by handler post
+     * Cancel toast by handler post.
+     *
      * @see #showShortSafely(int, Object...)
      * @see #showLongSafely(int, Object...)
      */

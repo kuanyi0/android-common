@@ -70,7 +70,8 @@ public class CustomDialog extends BaseDialog {
     }
 
     /**
-     *  设置控件的值
+     * 设置控件的值
+     *
      * @param values 长度需与{@link #mIds}一致，空值为0
      */
     public void setValues(int[] values) {
@@ -79,14 +80,24 @@ public class CustomDialog extends BaseDialog {
 
     /**
      * 设置控件的点击事件监听器
+     *
      * @param listeners 长度需与{@link #mIds}一致，空值为null
      */
     public void setOnClickListeners(View.OnClickListener[] listeners) {
         mOnClickListeners = listeners;
     }
 
+    public View getView(int id) {
+        int index = getIndex(id);
+        if (index >= 0) {
+            return mViews[index];
+        }
+        return null;
+    }
+
     /**
      * 设置控件的值
+     *
      * @param id 控件id
      * @param value 控件的值
      * @see TextView#setText(int)
@@ -109,14 +120,6 @@ public class CustomDialog extends BaseDialog {
         if (index >= 0) {
             mViews[index].setOnClickListener(listener);
         }
-    }
-
-    public View getView(int id) {
-        int index = getIndex(id);
-        if (index >= 0) {
-            return mViews[index];
-        }
-        return null;
     }
 
     private int getIndex(int id) {

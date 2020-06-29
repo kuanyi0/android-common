@@ -75,7 +75,7 @@ public class IoUtils {
             if (closeable != null) {
                 try {
                     closeable.close();
-                } catch (IOException ingored) {
+                } catch (IOException ignored) {
 
                 }
             }

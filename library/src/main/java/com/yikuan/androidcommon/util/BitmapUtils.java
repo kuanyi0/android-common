@@ -15,7 +15,6 @@ public class BitmapUtils {
     }
 
     /**
-     *
      * @param view whole shown
      * @return bitmap
      */
@@ -25,7 +24,6 @@ public class BitmapUtils {
     }
 
     /**
-     *
      * @param view partial shown
      * @return bitmap
      */
@@ -37,7 +35,6 @@ public class BitmapUtils {
     }
 
     /**
-     *
      * @param view hidden
      * @param width bitmap width
      * @param height bitmap height

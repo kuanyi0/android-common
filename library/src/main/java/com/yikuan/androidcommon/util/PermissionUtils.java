@@ -61,7 +61,7 @@ public class PermissionUtils {
     }
 
     public static void requestDrawOverlays() {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
             intent.setData(Uri.parse("package:" + sContext.getPackageName()));
             sContext.startActivity(intent);
@@ -69,7 +69,7 @@ public class PermissionUtils {
     }
 
     public static void requestWriteSettings() {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
             intent.setData(Uri.parse("package:" + sContext.getPackageName()));
             sContext.startActivity(intent);

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.yikuan.androidcommon.AndroidCommon;
+import com.yikuan.androidcommon.ui.MovableLayout;
 
 /**
  * @author yikuan
@@ -30,7 +31,7 @@ public class FloatingWindowManager {
         mLayoutParams.type = getType();
         mLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE |
                 WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
-        mLayoutParams.gravity = Gravity.START | Gravity.TOP;
+        mLayoutParams.gravity = Gravity.CENTER;
         mLayoutParams.x = 0;
         mLayoutParams.y = 0;
     }
@@ -45,6 +46,16 @@ public class FloatingWindowManager {
 
     public void addView(View view, WindowManager.LayoutParams params) {
         mWindowManager.addView(view, params);
+    }
+
+    public void addView(final MovableLayout movableLayout) {
+        mWindowManager.addView(movableLayout, mLayoutParams);
+        setMoveListener(movableLayout, mLayoutParams);
+    }
+
+    public void addView(final MovableLayout movableLayout, final WindowManager.LayoutParams params) {
+        mWindowManager.addView(movableLayout, params);
+        setMoveListener(movableLayout, params);
     }
 
     public void updateViewLayout(View view) {
@@ -65,5 +76,24 @@ public class FloatingWindowManager {
         } else {
             return WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
         }
+    }
+
+    public void setLayoutParams(WindowManager.LayoutParams layoutParams) {
+        mLayoutParams = layoutParams;
+    }
+
+    public WindowManager.LayoutParams getLayoutParams() {
+        return mLayoutParams;
+    }
+
+    private void setMoveListener(final MovableLayout movableLayout, final WindowManager.LayoutParams params) {
+        movableLayout.setListener(new MovableLayout.Listener() {
+            @Override
+            public void onMove(int offsetX, int offsetY) {
+                params.x += offsetX;
+                params.y += offsetY;
+                updateViewLayout(movableLayout, params);
+            }
+        });
     }
 }

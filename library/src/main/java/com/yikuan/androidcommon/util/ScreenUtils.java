@@ -44,4 +44,10 @@ public class ScreenUtils {
         sDisplay.getMetrics(metrics);
         return metrics.densityDpi;
     }
+
+    public static float getScreenDensity() {
+        DisplayMetrics metrics = new DisplayMetrics();
+        sDisplay.getMetrics(metrics);
+        return metrics.density;
+    }
 }

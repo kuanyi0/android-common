@@ -87,28 +87,28 @@ public class ThreadPoolManager {
     private ExecutorService mSingleThreadPool;
 
     public ExecutorService getFixedThreadPool() {
-        if (mFixedThreadPool == null) {
+        if (mFixedThreadPool == null || mFixedThreadPool.isTerminated()) {
             mFixedThreadPool = Executors.newFixedThreadPool(CORE_POOL_SIZE, sFactory);
         }
         return mFixedThreadPool;
     }
 
     public ExecutorService getCachedThreadPool() {
-        if (mCachedThreadPool == null) {
+        if (mCachedThreadPool == null || mCachedThreadPool.isTerminated()) {
             mCachedThreadPool = Executors.newCachedThreadPool(sFactory);
         }
         return mCachedThreadPool;
     }
 
     public ScheduledExecutorService getScheduledThreadPool() {
-        if (mScheduledThreadPool == null) {
+        if (mScheduledThreadPool == null || mScheduledThreadPool.isTerminated()) {
             mScheduledThreadPool = Executors.newScheduledThreadPool(CORE_POOL_SIZE, sFactory);
         }
         return mScheduledThreadPool;
     }
 
     public ExecutorService getSingleThreadPool() {
-        if (mSingleThreadPool == null) {
+        if (mSingleThreadPool == null || mSingleThreadPool.isTerminated()) {
             mSingleThreadPool = Executors.newSingleThreadExecutor(sFactory);
         }
         return mSingleThreadPool;

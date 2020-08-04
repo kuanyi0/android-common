@@ -34,10 +34,10 @@ public class IoUtils {
         return result;
     }
 
-    public static boolean writeTextFile(String path, String content) {
+    public static boolean writeTextFile(String path, String content, boolean append) {
         FileOutputStream fos = null;
         try {
-            fos = new FileOutputStream(path);
+            fos = new FileOutputStream(path, append);
             byte[] bytes = content.getBytes();
             fos.write(bytes);
         } catch (FileNotFoundException e) {

@@ -16,6 +16,10 @@ public class PathUtils {
         throw new UnsupportedOperationException("cannot be instantiated.");
     }
 
+    // -------------------------------------------------------------------
+    // Internal public storage
+    // -------------------------------------------------------------------
+
     /**
      * @return /system
      */
@@ -37,6 +41,10 @@ public class PathUtils {
         return getAbsolutePath(Environment.getDownloadCacheDirectory());
     }
 
+    // -------------------------------------------------------------------
+    // Internal private storage
+    // -------------------------------------------------------------------
+
     /**
      * @return /data/data/package/cache
      */
@@ -51,6 +59,9 @@ public class PathUtils {
         return getAbsolutePath(AndroidCommon.getApp().getFilesDir());
     }
 
+    // -------------------------------------------------------------------
+    // External public storage
+    // -------------------------------------------------------------------
 
     public static String getExternalStoragePath() {
         checkExternalStorageState();
@@ -101,6 +112,10 @@ public class PathUtils {
         checkExternalStorageState();
         return getAbsolutePath(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_NOTIFICATIONS));
     }
+
+    // -------------------------------------------------------------------
+    // External private storage
+    // -------------------------------------------------------------------
 
     public static String getExternalAppDataPath() {
         checkExternalStorageState();

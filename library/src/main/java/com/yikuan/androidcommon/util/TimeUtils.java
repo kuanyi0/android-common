@@ -17,14 +17,23 @@ public class TimeUtils {
     private static final Map<String, ThreadLocal<SimpleDateFormat>> sMap = new HashMap<>();
 
     private static final String PATTERN_DEFAULT = "yyyy-MM-dd HH:mm:ss";
-    private static final String PATTERN_FILE_NAME = "yyyyMMddHHmmsss";
+    private static final String PATTERN_DATE_FILE_NAME = "yyyyMMdd";
+    private static final String PATTERN_TIME_FILE_NAME = "yyyyMMddHHmmsss";
 
     private TimeUtils() {
         throw new UnsupportedOperationException("cannot be instantiated.");
     }
 
+    public static String format(Date date) {
+        return format(date, PATTERN_DEFAULT);
+    }
+
     public static String format(Date date, String pattern) {
         return getSdf(pattern).format(date);
+    }
+
+    public static Date parse(String dateStr) throws ParseException {
+        return parse(dateStr, PATTERN_DEFAULT);
     }
 
     public static Date parse(String dateStr, String pattern) throws ParseException {
@@ -42,8 +51,12 @@ public class TimeUtils {
         return dateFormat.format(new Date(mills));
     }
 
-    public static String formatFileName() {
-        return getSdf(PATTERN_FILE_NAME).format(new Date());
+    public static String formatDateFileName() {
+        return getSdf(PATTERN_DATE_FILE_NAME).format(new Date());
+    }
+
+    public static String formatTimeFileName() {
+        return getSdf(PATTERN_TIME_FILE_NAME).format(new Date());
     }
 
     private static SimpleDateFormat getSdf(final String pattern) {

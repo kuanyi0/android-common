@@ -98,12 +98,10 @@ public class FileUtils {
         if (!dir.isDirectory()) {
             throw new IllegalArgumentException(dir + " is not a directory.");
         }
-
         File[] files = dir.listFiles();
         if (files == null) {
             throw new IOException("failed to list contents of " + dir);
         }
-
         IOException exception = null;
         for (File file : files) {
             try {
@@ -112,7 +110,6 @@ public class FileUtils {
                 exception = e;
             }
         }
-
         if (exception != null) {
             throw exception;
         }
@@ -159,7 +156,6 @@ public class FileUtils {
         } catch (Exception ignored) {
 
         }
-
         try {
             return file.delete();
         } catch (Exception ignored) {
@@ -184,6 +180,23 @@ public class FileUtils {
         }
     }
 
+    public static void forceCreateNewFile(File file) throws IOException {
+        if (file == null) {
+            throw new NullPointerException("file cannot be null.");
+        }
+        if (file.exists()) {
+            if (!file.isFile()) {
+                throw new IOException(file + " is not a file");
+            }
+        } else {
+            if (!file.createNewFile()) {
+                if (!file.isFile()) {
+                    throw new IOException("failed to create file " + file);
+                }
+            }
+        }
+    }
+
     public static long sizeOf(File file) {
         if (file == null) {
             throw new NullPointerException("file cannot be null.");
@@ -200,7 +213,6 @@ public class FileUtils {
 
     public static long sizeOfDir(File dir) {
         checkDir(dir);
-
         final File[] files = dir.listFiles();
         if (files == null) {
             return 0;
@@ -212,7 +224,6 @@ public class FileUtils {
                 break;
             }
         }
-
         return size;
     }
 

@@ -1,13 +1,14 @@
 package com.yikuan.androidcommon.util;
 
-import android.os.Process;
 import android.util.Log;
 
 import androidx.annotation.IntDef;
 
 import java.io.File;
+import java.io.IOException;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.util.Date;
 
 /**
  * @author yikuan
@@ -16,7 +17,8 @@ import java.lang.annotation.RetentionPolicy;
 public class LogUtils {
     private static final String TAG = "LogUtils";
     private static final String DIR = "log";
-    private static java.lang.Process sProcess;
+    private static final String FILE_NAME_SUFFIX = ".log";
+    private static final String PATTERN_LOG_TIME = "MM-dd HH:mm:ss.SSS";
 
     public static final int VERBOSE = 1;
     public static final int DEBUG = 2;
@@ -79,31 +81,23 @@ public class LogUtils {
         }
     }
 
-    public static void startDump2File() {
-        String externalAppFilesPath = PathUtils.getExternalAppFilesPath();
-        if (externalAppFilesPath.isEmpty()) {
+    public static void write(String tag, String msg) {
+        String path = PathUtils.getExternalAppFilesPath();
+        if (path.isEmpty()) {
             LogUtils.d(TAG, "external storage unmounted");
             return;
         }
-        File dir = FileUtils.getFile(externalAppFilesPath, DIR);
+        File dir = FileUtils.getFile(path, DIR);
         try {
             FileUtils.forceMkdir(dir);
-            String fileName = TimeUtils.formatFileName();
+            String fileName = TimeUtils.formatDateFileName() + FILE_NAME_SUFFIX;
             File file = FileUtils.getFile(dir, fileName);
-            if (!file.exists() && !file.createNewFile()) {
-                LogUtils.d(TAG, "fail to create log file");
-                return;
-            }
-            String path = file.getAbsolutePath();
-            Runtime runtime = Runtime.getRuntime();
-            runtime.exec("logcat -c");
-            sProcess = runtime.exec("logcat -f " + path + " --pid=" + Process.myPid());
-        } catch (Exception e) {
+            String time = TimeUtils.format(new Date(), PATTERN_LOG_TIME);
+            String content = time + " " + tag + ": " + msg + "\n";
+            IoUtils.writeTextFile(file.getAbsolutePath(), content, true);
+        } catch (IOException e) {
             e.printStackTrace();
+            LogUtils.e(TAG, "write log fail");
         }
-    }
-
-    public static void stopDump2File() {
-        sProcess.destroy();
     }
 }

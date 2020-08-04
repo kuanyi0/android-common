@@ -81,6 +81,9 @@ public class PermissionUtils {
      */
     private static class PermissionActivity extends AppCompatActivity {
         private static final int REQUEST_CODE = 0;
+        /**
+         * @see android.Manifest.permission
+         */
         private String permission = null;
 
         @Override

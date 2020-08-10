@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
-
-apply plugin: 'com.novoda.bintray-release'
+apply from: "${rootProject.projectDir}/upload.gradle"
 
 android {
     compileSdkVersion 29
@@ -39,13 +38,4 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.google.code.gson:gson:2.8.5'
-}
-
-publish {
-    userOrg = 'kimyi'
-    groupId = 'com.kimyi'
-    artifactId = 'android-common'
-    publishVersion = rootProject.ext.versionName
-    desc = 'android common library'
-    website = 'https://github.com/isyikuan/android-common' 
 }

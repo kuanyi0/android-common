@@ -1,0 +1,10 @@
+apply plugin: 'com.novoda.bintray-release'
+
+publish {
+    userOrg = 'kimyi'
+    groupId = 'com.kimyi'
+    artifactId = 'android-common'
+    publishVersion = rootProject.ext.versionName
+    desc = 'android common library'
+    website = 'https://github.com/isyikuan/android-common'
+}

@@ -1,5 +1,5 @@
 Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
+properties.load(rootProject.file('local.properties').newDataInputStream())
 
 ext {
     majorVersion = Integer.parseInt(properties.getProperty("MAJOR_VERSION"))

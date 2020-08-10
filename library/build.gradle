@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-apply from: "${rootProject.projectDir}/upload.gradle"
+applyUploadIfExist()
 
 android {
     compileSdkVersion 29
@@ -11,8 +11,8 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 29
-        versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.versionName
+        versionCode getProperty("versionCode", 0)
+        versionName getProperty("versionName", "0.0.0")
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -38,4 +38,16 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.google.code.gson:gson:2.8.5'
+}
+
+def applyUploadIfExist() {
+    def uploadScript = new File(rootProject.projectDir, "upload.gradle")
+    println(uploadScript.path)
+    if (uploadScript.exists()) {
+        apply from: "${rootProject.projectDir}/upload.gradle"
+    }
+}
+
+def getProperty(propertyName, defaultValue) {
+    rootProject.ext.has(propertyName) ? rootProject.ext.get(propertyName) : defaultValue
 }

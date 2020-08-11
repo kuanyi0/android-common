@@ -1,16 +1,10 @@
-Properties properties = new Properties()
-properties.load(rootProject.file('local.properties').newDataInputStream())
-
 ext {
-    majorVersion = Integer.parseInt(properties.getProperty("MAJOR_VERSION"))
-    minorVersion = Integer.parseInt(properties.getProperty("MINOR_VERSION"))
-    patchVersion = Integer.parseInt(properties.getProperty("PATCH_VERSION"))
     versionCode = getVersionCode()
     versionName = getVersionName()
 }
 
 def getVersionCode() {
-    Integer code = majorVersion * 100 + minorVersion * 10 + patchVersion
+    Integer code = majorVersion.toInteger() * 100 + minorVersion.toInteger() * 10 + patchVersion.toInteger()
     println("version code: " + code)
     return code
 }

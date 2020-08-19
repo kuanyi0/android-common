@@ -4,7 +4,7 @@ publish {
     userOrg = 'kimyi'
     groupId = 'com.kimyi'
     artifactId = 'android-common'
-    publishVersion = rootProject.ext.versionName
+    publishVersion = project.android.defaultConfig.versionName
     desc = 'android common library'
     website = 'https://github.com/isyikuan/android-common'
 }

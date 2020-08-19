@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-applyUploadIfExist()
 
 android {
     compileSdkVersion 29
@@ -38,14 +37,6 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.google.code.gson:gson:2.8.5'
-}
-
-def applyUploadIfExist() {
-    def uploadScript = new File(rootProject.projectDir, "upload.gradle")
-    println(uploadScript.path)
-    if (uploadScript.exists()) {
-        apply from: "${rootProject.projectDir}/upload.gradle"
-    }
 }
 
 def getProperty(propertyName, defaultValue) {

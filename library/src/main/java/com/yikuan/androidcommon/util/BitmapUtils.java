@@ -1,9 +1,11 @@
 package com.yikuan.androidcommon.util;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.util.Base64;
 import android.view.View;
 
 /**
@@ -66,5 +68,14 @@ public class BitmapUtils {
         drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
         drawable.draw(canvas);
         return bitmap;
+    }
+
+    /**
+     * @param base64String Base64 string
+     * @return bitmap
+     */
+    public static Bitmap base64String2Bitmap(String base64String) {
+        byte[] bytes = Base64.decode(base64String, Base64.DEFAULT);
+        return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
     }
 }

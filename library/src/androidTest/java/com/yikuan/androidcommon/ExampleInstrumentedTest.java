@@ -5,7 +5,7 @@ import android.content.Context;
 import androidx.test.InstrumentationRegistry;
 import androidx.test.runner.AndroidJUnit4;
 
-import com.yikuan.androidcommon.util.CrashHandler;
+import com.yikuan.androidcommon.util.BitmapUtils;
 import com.yikuan.androidcommon.util.LogDumper;
 import com.yikuan.androidcommon.util.LogUtils;
 import com.yikuan.androidcommon.util.PathUtils;
@@ -63,8 +63,7 @@ public class ExampleInstrumentedTest {
     }
 
     @Test
-    public void testCrashHandler() {
-        CrashHandler.getInstance().init();
-        throw new RuntimeException("test crash handler");
+    public void testBitmapUtils() {
+        BitmapUtils.base64String2Bitmap("");
     }
 }

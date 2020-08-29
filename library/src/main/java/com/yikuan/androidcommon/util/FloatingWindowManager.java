@@ -29,8 +29,7 @@ public class FloatingWindowManager {
                 0, 0,
                 PixelFormat.TRANSPARENT);
         mLayoutParams.type = getType();
-        mLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE |
-                WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+        mLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
         mLayoutParams.gravity = Gravity.CENTER;
         mLayoutParams.x = 0;
         mLayoutParams.y = 0;

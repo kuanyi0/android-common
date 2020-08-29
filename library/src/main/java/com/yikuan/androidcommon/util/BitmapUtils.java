@@ -8,6 +8,9 @@ import android.graphics.drawable.Drawable;
 import android.util.Base64;
 import android.view.View;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+
 /**
  * @author yikuan
  * @date 2019/10/14
@@ -77,5 +80,44 @@ public class BitmapUtils {
     public static Bitmap base64String2Bitmap(String base64String) {
         byte[] bytes = Base64.decode(base64String, Base64.DEFAULT);
         return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+    }
+
+    /**
+     * @param bitmap bitmap
+     * @param path save path
+     * @return {@code true} if success, {@code false} otherwise
+     */
+    public static boolean saveBitmap2Png(Bitmap bitmap, String path) {
+        return saveBitmap2File(bitmap, path, Bitmap.CompressFormat.PNG, 100);
+    }
+
+    /**
+     * @param bitmap bitmap
+     * @param path save path
+     * @return {@code true} if success, {@code false} otherwise
+     */
+    public static boolean saveBitmap2Jpeg(Bitmap bitmap, String path) {
+        return saveBitmap2File(bitmap, path, Bitmap.CompressFormat.JPEG, 100);
+    }
+
+    /**
+     * @param bitmap         bitmap
+     * @param path           Save path
+     * @param compressFormat compress format
+     * @param quality        compress quality, value is 0-100
+     * @return {@code true} if success, {@code false} otherwise
+     */
+    public static boolean saveBitmap2File(Bitmap bitmap, String path, Bitmap.CompressFormat compressFormat, int quality) {
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(path);
+            bitmap.compress(compressFormat, quality, fos);
+            return true;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            IoUtils.close(fos);
+        }
     }
 }

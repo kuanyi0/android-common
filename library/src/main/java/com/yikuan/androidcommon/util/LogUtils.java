@@ -90,9 +90,9 @@ public class LogUtils {
         File dir = FileUtils.getFile(path, DIR);
         try {
             FileUtils.forceMkdir(dir);
-            String fileName = TimeUtils.formatDateFileName() + FILE_NAME_SUFFIX;
+            String fileName = DateUtils.formatDateFileName() + FILE_NAME_SUFFIX;
             File file = FileUtils.getFile(dir, fileName);
-            String time = TimeUtils.format(new Date(), PATTERN_LOG_TIME);
+            String time = DateUtils.format(new Date(), PATTERN_LOG_TIME);
             String content = time + " " + tag + ": " + msg + "\n";
             IoUtils.writeTextFile(file.getAbsolutePath(), content, true);
         } catch (IOException e) {

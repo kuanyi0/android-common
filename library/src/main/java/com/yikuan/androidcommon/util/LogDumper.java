@@ -34,7 +34,7 @@ public class LogDumper {
         File dir = FileUtils.getFile(externalAppFilesPath, DIR);
         try {
             FileUtils.forceMkdir(dir);
-            String fileName = TimeUtils.formatTimeFileName() + FILE_NAME_SUFFIX;
+            String fileName = DateUtils.formatTimeFileName() + FILE_NAME_SUFFIX;
             File file = FileUtils.getFile(dir, fileName);
             if (!file.exists() && !file.createNewFile()) {
                 LogUtils.d(TAG, "fail to create log dumper file");

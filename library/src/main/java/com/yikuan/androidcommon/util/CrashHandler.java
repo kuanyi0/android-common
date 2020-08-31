@@ -62,9 +62,9 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         }
         File dir = FileUtils.getFile(path, DIR);
         FileUtils.forceMkdir(dir);
-        String fileName = TimeUtils.formatDateFileName() + FILE_NAME_SUFFIX;
+        String fileName = DateUtils.formatDateFileName() + FILE_NAME_SUFFIX;
         File file = FileUtils.getFile(dir, fileName);
-        String time = TimeUtils.format(new Date(), PATTERN_LOG_TIME);
+        String time = DateUtils.format(new Date(), PATTERN_LOG_TIME);
         String title = String.format(LOG_TITLE + "\n", time);
         FileOutputStream fileOutputStream = new FileOutputStream(file, true);
         fileOutputStream.write(title.getBytes());

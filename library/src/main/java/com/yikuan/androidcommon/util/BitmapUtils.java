@@ -22,19 +22,19 @@ public class BitmapUtils {
     }
 
     /**
-     * @param view whole shown
+     * @param view view show fully
      * @return bitmap
      */
-    public static Bitmap createBitmapByShownView(View view) {
+    public static Bitmap createBitmap(View view) {
         view.buildDrawingCache();
         return view.getDrawingCache();
     }
 
     /**
-     * @param view partial shown
+     * @param view view maybe show partly
      * @return bitmap
      */
-    public static Bitmap createBitmapByPartialShownView(View view) {
+    public static Bitmap createBitmap2(View view) {
         Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         view.draw(canvas);
@@ -42,12 +42,12 @@ public class BitmapUtils {
     }
 
     /**
-     * @param view hidden
+     * @param view view maybe not show
      * @param width bitmap width
      * @param height bitmap height
      * @return bitmap
      */
-    public static Bitmap createBitmapByHiddenView(View view, int width, int height) {
+    public static Bitmap createBitmap3(View view, int width, int height) {
         int measuredWidth = View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY);
         int measuredHeight = View.MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.EXACTLY);
         view.measure(measuredWidth, measuredHeight);

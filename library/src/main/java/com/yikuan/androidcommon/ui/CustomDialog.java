@@ -1,10 +1,13 @@
 package com.yikuan.androidcommon.ui;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -18,8 +21,9 @@ public class CustomDialog extends BaseDialog {
     private int mLayoutRes;
     private View[] mViews;
     private int[] mIds;
-    private int[] mValues;
+    private Object[] mValues;
     private View.OnClickListener[] mOnClickListeners;
+    private boolean mCancelOnClickRoot;
 
     public CustomDialog(@NonNull Context context) {
         super(context);
@@ -46,19 +50,52 @@ public class CustomDialog extends BaseDialog {
         if (mLayoutRes == 0) {
             return;
         }
-        if (mIds == null) {
+        if (mIds == null || mValues == null) {
             return;
         }
         mViews = new View[mIds.length];
         for (int i = 0; i < mIds.length; i++) {
             int id = mIds[i];
-            mViews[i] = findViewById(id);
-            setValue(id, mValues[i]);
-            setOnClickListener(id, mOnClickListeners[i]);
+            View view = findViewById(id);
+            if (view == null) {
+                continue;
+            }
+            Object value = null;
+            if (i < mValues.length) {
+                value = mValues[i];
+            }
+            if (value != null) {
+                setViewValue(view, value);
+            }
+            View.OnClickListener listener = null;
+            if (mOnClickListeners != null && i < mOnClickListeners.length) {
+                listener = mOnClickListeners[i];
+            }
+            if (listener != null) {
+                view.setOnClickListener(listener);
+            }
+            mViews[i] = view;
+        }
+        View root = findViewById(android.R.id.content);
+        if (mCancelOnClickRoot) {
+            root.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dismiss();
+                }
+            });
         }
     }
 
-    public void setLayoutRes(int layoutRes) {
+    private void setViewValue(View view, Object value) {
+        if (view instanceof TextView) {
+            setText((TextView) view, value);
+        } else if (view instanceof ImageView) {
+            setImage((ImageView) view, value);
+        }
+    }
+
+    public void setLayoutRes(@LayoutRes int layoutRes) {
         mLayoutRes = layoutRes;
     }
 
@@ -72,53 +109,55 @@ public class CustomDialog extends BaseDialog {
     /**
      * 设置控件的值
      *
-     * @param values 长度需与{@link #mIds}一致，空值为0
+     * @param values 长度需与{@link #mIds}一致，空值{@code null}表示不设置对应id的控件的值
      */
-    public void setValues(int[] values) {
+    public void setValues(Object[] values) {
         mValues = values;
     }
 
     /**
      * 设置控件的点击事件监听器
      *
-     * @param listeners 长度需与{@link #mIds}一致，空值为null
+     * @param listeners 长度需与{@link #mIds}一致，空值{@code null}表示不设置对应id的控件的值
      */
     public void setOnClickListeners(View.OnClickListener[] listeners) {
         mOnClickListeners = listeners;
     }
 
-    public View getView(int id) {
+    public void setCancelOnClickRoot(Boolean cancel) {
+        mCancelOnClickRoot = cancel;
+    }
+
+    private View getView(int id) {
+        if (mViews == null) {
+            return null;
+        }
         int index = getIndex(id);
-        if (index >= 0) {
+        if (index >= 0 && index < mViews.length) {
             return mViews[index];
         }
         return null;
     }
 
-    /**
-     * 设置控件的值
-     *
-     * @param id 控件id
-     * @param value 控件的值
-     * @see TextView#setText(int)
-     * @see ImageView#setImageResource(int)
-     */
-    private void setValue(int id, int value) {
-        int index = getIndex(id);
-        if (index >= 0) {
-            View view = mViews[index];
-            if (view instanceof TextView) {
-                ((TextView) view).setText(value);
-            } else if (view instanceof ImageView) {
-                ((ImageView) view).setImageResource(value);
-            }
+    private void setText(TextView textView, Object value) {
+        if (value instanceof Integer) {
+            textView.setText((Integer) value);
+        } else if (value instanceof CharSequence) {
+            textView.setText((CharSequence) value);
+        } else {
+            throw new IllegalArgumentException("value is illegal");
         }
     }
 
-    private void setOnClickListener(int id, View.OnClickListener listener) {
-        int index = getIndex(id);
-        if (index >= 0) {
-            mViews[index].setOnClickListener(listener);
+    private void setImage(ImageView imageView, Object value) {
+        if (value instanceof Drawable) {
+            imageView.setImageDrawable((Drawable) value);
+        } else if(value instanceof Bitmap){
+            imageView.setImageBitmap((Bitmap) value);
+        } else if (value instanceof Integer) {
+            imageView.setImageResource((Integer) value);
+        } else {
+            throw new IllegalArgumentException("value is illegal");
         }
     }
 

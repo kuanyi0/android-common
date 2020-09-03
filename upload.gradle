@@ -1,10 +1,11 @@
 apply plugin: 'com.novoda.bintray-release'
+apply from: "${project(":library").projectDir}/config.gradle"
 
 publish {
     userOrg = 'kimyi'
     groupId = 'com.kimyi'
     artifactId = 'android-common'
-    publishVersion = project.android.defaultConfig.versionName
+    publishVersion = project.ext.versionName
     desc = 'android common library'
     website = 'https://github.com/isyikuan/android-common'
 }

@@ -5,7 +5,7 @@
 Gradle:
 
 ```
-implementation 'com.kimyi:android-common:0.2.5'
+implementation 'com.kimyi:android-common:0.2.6'
 ```
 
 

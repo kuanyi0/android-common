@@ -1,6 +1,8 @@
 package com.yikuan.androidcommon.util;
 
 
+import androidx.annotation.Nullable;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -64,13 +66,17 @@ public class DateUtils {
             synchronized (DateUtils.class) {
                 threadLocal = sMap.get(pattern);
                 if (threadLocal == null) {
-                    threadLocal = new ThreadLocal<>();
-                    threadLocal.set(new SimpleDateFormat(pattern, Locale.getDefault()));
+                    threadLocal = new ThreadLocal<SimpleDateFormat>() {
+                        @Nullable
+                        @Override
+                        protected SimpleDateFormat initialValue() {
+                            return new SimpleDateFormat(pattern, Locale.getDefault());
+                        }
+                    };
                     sMap.put(pattern, threadLocal);
                 }
             }
         }
         return threadLocal.get();
     }
-
 }

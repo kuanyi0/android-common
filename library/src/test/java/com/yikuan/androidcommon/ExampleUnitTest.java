@@ -1,6 +1,7 @@
 package com.yikuan.androidcommon;
 
 import com.yikuan.androidcommon.util.DateUtils;
+import com.yikuan.androidcommon.util.Defaults;
 import com.yikuan.androidcommon.util.ThreadPoolManager;
 
 import org.junit.Test;
@@ -57,5 +58,18 @@ public class ExampleUnitTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void testDefaults() {
+        assertEquals(false, Defaults.get(boolean.class));
+        assertEquals('\0', Defaults.get(char.class).charValue());
+        assertEquals(0, Defaults.get(byte.class).byteValue());
+        assertEquals(0, Defaults.get(short.class).shortValue());
+        assertEquals(0, Defaults.get(int.class).intValue());
+        assertEquals(0, Defaults.get(long.class).longValue());
+        assertEquals(0, Defaults.get(float.class), 0);
+        assertEquals(0, Defaults.get(double.class), 0);
+        assertNull(Defaults.get(String.class));
     }
 }

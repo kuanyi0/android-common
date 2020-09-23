@@ -5,12 +5,14 @@
 Gradle:
 
 ```
-implementation 'com.kimyi:android-common:0.2.6'
+implementation 'com.kimyi:android-common:0.2.7'
 ```
 
 
 
 ## Get started
+
+Optional:
 
 ```
 class App : Application() {

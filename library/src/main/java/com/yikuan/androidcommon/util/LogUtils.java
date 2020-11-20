@@ -38,7 +38,7 @@ public class LogUtils {
     private static int sLevel = VERBOSE;
 
     private LogUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     public static void setLevel(@Level int level) {

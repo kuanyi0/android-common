@@ -18,7 +18,7 @@ import android.provider.MediaStore;
 public class UriUtils {
 
     private UriUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     public static String getPathFromUri(Context context, Uri uri) {

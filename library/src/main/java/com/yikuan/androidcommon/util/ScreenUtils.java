@@ -18,13 +18,13 @@ public class ScreenUtils {
     static {
         sWindowManager = (WindowManager) AndroidCommon.getApp().getSystemService(Context.WINDOW_SERVICE);
         if (sWindowManager == null) {
-            throw new RuntimeException("failed to get window manager.");
+            throw new RuntimeException("failed to get window manager");
         }
         sDisplay = sWindowManager.getDefaultDisplay();
     }
 
     private ScreenUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     public static int getScreenWidth() {

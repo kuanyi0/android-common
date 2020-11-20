@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 public class IoUtils {
     private IoUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     public static String readTextFile(String path) {

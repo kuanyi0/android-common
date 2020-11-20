@@ -18,7 +18,7 @@ import java.io.FileOutputStream;
 public class BitmapUtils {
 
     private BitmapUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     /**

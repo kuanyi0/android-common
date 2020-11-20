@@ -23,7 +23,7 @@ public class NetworkUtils {
     }
 
     private NetworkUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     @RequiresPermission(ACCESS_NETWORK_STATE)

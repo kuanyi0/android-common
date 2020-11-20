@@ -29,7 +29,7 @@ public class SpUtils {
     }
 
     private SpUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     public static void setBoolean(String key, boolean value) {

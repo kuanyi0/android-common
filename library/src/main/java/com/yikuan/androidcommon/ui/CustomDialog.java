@@ -40,7 +40,7 @@ public class CustomDialog extends BaseDialog {
     @Override
     protected int getLayoutRes() {
         if (mLayoutRes == 0) {
-            throw new RuntimeException("u must set layout res first.");
+            throw new RuntimeException("u must set layout res first");
         }
         return mLayoutRes;
     }

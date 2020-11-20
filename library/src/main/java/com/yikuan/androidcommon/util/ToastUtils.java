@@ -21,7 +21,7 @@ public class ToastUtils {
     }
 
     private ToastUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     public static void showShort(@StringRes final int resId, Object... args) {

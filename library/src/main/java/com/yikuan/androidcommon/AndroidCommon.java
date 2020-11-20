@@ -11,19 +11,19 @@ public class AndroidCommon {
     private static Application sApplication;
 
     private AndroidCommon() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     public static void init(Context context) {
         if (context == null) {
-            throw new NullPointerException("context is null.");
+            throw new NullPointerException("context is null");
         }
         sApplication = (Application) context.getApplicationContext();
     }
 
     public static Application getApp() {
         if (sApplication == null) {
-            throw new NullPointerException("u need to init first.");
+            throw new NullPointerException("u need to init first");
         }
         return sApplication;
     }

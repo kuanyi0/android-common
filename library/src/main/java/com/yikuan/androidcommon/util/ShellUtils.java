@@ -15,7 +15,7 @@ public class ShellUtils {
     private static final String CHARSET_NAME = "UTF-8";
 
     private ShellUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     public static CommandResult execCmd(String command, boolean isRoot) {

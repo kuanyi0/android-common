@@ -28,7 +28,7 @@ public class PermissionUtils {
     }
 
     private PermissionUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     public static boolean isGranted(String permission) {

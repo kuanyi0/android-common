@@ -8,7 +8,7 @@ import java.lang.reflect.Array;
  */
 public class Defaults {
     private Defaults() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     @SuppressWarnings("unchecked")

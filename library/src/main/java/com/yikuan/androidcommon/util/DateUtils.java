@@ -22,7 +22,7 @@ public class DateUtils {
     private static final String PATTERN_TIME_FILE_NAME = "yyyyMMddHHmmsss";
 
     private DateUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     public static String format(Date date) {
@@ -59,7 +59,7 @@ public class DateUtils {
 
     private static SimpleDateFormat getSdf(final String pattern) {
         if (pattern == null) {
-            throw new NullPointerException("pattern cannot be null.");
+            throw new NullPointerException("pattern cannot be null");
         }
         ThreadLocal<SimpleDateFormat> threadLocal = sMap.get(pattern);
         if (threadLocal == null) {

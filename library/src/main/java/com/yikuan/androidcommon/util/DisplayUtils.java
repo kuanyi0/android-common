@@ -15,7 +15,7 @@ public class DisplayUtils {
     }
 
     private DisplayUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     public static int px2dp(float px) {

@@ -13,15 +13,15 @@ import java.nio.channels.FileChannel;
  */
 public class FileUtils {
     private FileUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     public static File getFile(File dir, String... names) {
         if (dir == null) {
-            throw new NullPointerException("dir cannot be null.");
+            throw new NullPointerException("dir cannot be null");
         }
         if (names == null) {
-            throw new NullPointerException("names cannot be null.");
+            throw new NullPointerException("names cannot be null");
         }
         File file = dir;
         for (String name : names) {
@@ -32,7 +32,7 @@ public class FileUtils {
 
     public static File getFile(String... names) {
         if (names == null) {
-            throw new NullPointerException("names cannot be null.");
+            throw new NullPointerException("names cannot be null");
         }
         File file = null;
         for (String name : names) {
@@ -47,7 +47,7 @@ public class FileUtils {
 
     public static FileInputStream openInputStream(File file) throws IOException {
         if (file == null) {
-            throw new NullPointerException("file cannot be null.");
+            throw new NullPointerException("file cannot be null");
         }
         if (file.exists()) {
             if (file.isDirectory()) {
@@ -68,7 +68,7 @@ public class FileUtils {
 
     public static FileOutputStream openOutputStream(File file, boolean append) throws IOException {
         if (file == null) {
-            throw new NullPointerException("file cannot be null.");
+            throw new NullPointerException("file cannot be null");
         }
         if (file.exists()) {
             if (file.isDirectory()) {
@@ -90,13 +90,13 @@ public class FileUtils {
 
     public static void cleanDir(File dir) throws IOException {
         if (dir == null) {
-            throw new NullPointerException("dir cannot be null.");
+            throw new NullPointerException("dir cannot be null");
         }
         if (!dir.exists()) {
-            throw new IllegalArgumentException(dir + " does not exist.");
+            throw new IllegalArgumentException(dir + " does not exist");
         }
         if (!dir.isDirectory()) {
-            throw new IllegalArgumentException(dir + " is not a directory.");
+            throw new IllegalArgumentException(dir + " is not a directory");
         }
         File[] files = dir.listFiles();
         if (files == null) {
@@ -117,7 +117,7 @@ public class FileUtils {
 
     public static void deleteDir(File dir) throws IOException {
         if (dir == null) {
-            throw new NullPointerException("dir cannot be null.");
+            throw new NullPointerException("dir cannot be null");
         }
         if (!dir.exists()) {
             return;
@@ -130,7 +130,7 @@ public class FileUtils {
 
     public static void forceDelete(File file) throws IOException {
         if (file == null) {
-            throw new NullPointerException("file cannot be null.");
+            throw new NullPointerException("file cannot be null");
         }
         if (file.isDirectory()) {
             deleteDir(file);
@@ -165,7 +165,7 @@ public class FileUtils {
 
     public static void forceMkdir(File dir) throws IOException {
         if (dir == null) {
-            throw new NullPointerException("dir cannot be null.");
+            throw new NullPointerException("dir cannot be null");
         }
         if (dir.exists()) {
             if (!dir.isDirectory()) {
@@ -182,7 +182,7 @@ public class FileUtils {
 
     public static void forceCreateNewFile(File file) throws IOException {
         if (file == null) {
-            throw new NullPointerException("file cannot be null.");
+            throw new NullPointerException("file cannot be null");
         }
         if (file.exists()) {
             if (!file.isFile()) {
@@ -199,10 +199,10 @@ public class FileUtils {
 
     public static long sizeOf(File file) {
         if (file == null) {
-            throw new NullPointerException("file cannot be null.");
+            throw new NullPointerException("file cannot be null");
         }
         if (!file.exists()) {
-            throw new IllegalArgumentException(file + " does not exist.");
+            throw new IllegalArgumentException(file + " does not exist");
         }
         if (file.isDirectory()) {
             return sizeOfDir(file);
@@ -229,13 +229,13 @@ public class FileUtils {
 
     public static void checkDir(File dir) {
         if (dir == null) {
-            throw new NullPointerException("dir cannot be null.");
+            throw new NullPointerException("dir cannot be null");
         }
         if (!dir.exists()) {
-            throw new IllegalArgumentException(dir + " does not exist.");
+            throw new IllegalArgumentException(dir + " does not exist");
         }
         if (!dir.isDirectory()) {
-            throw new IllegalArgumentException(dir + " is not a directory.");
+            throw new IllegalArgumentException(dir + " is not a directory");
         }
     }
 

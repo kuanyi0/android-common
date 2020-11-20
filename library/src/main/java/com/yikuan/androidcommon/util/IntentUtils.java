@@ -17,7 +17,7 @@ import java.io.File;
 public class IntentUtils {
 
     private IntentUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     public static void selectFile(Activity activity, String dirPath) {

@@ -13,7 +13,7 @@ import java.io.File;
 public class PathUtils {
 
     private PathUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated.");
+        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     //--------------------------------------------------------------------
@@ -156,7 +156,7 @@ public class PathUtils {
 
     private static void checkExternalStorageState() {
         if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-            throw new RuntimeException("external storage isn't mounted.");
+            throw new RuntimeException("external storage isn't mounted");
         }
     }
 }

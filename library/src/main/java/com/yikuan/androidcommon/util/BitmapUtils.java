@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.util.Base64;
 import android.view.View;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
@@ -74,12 +75,40 @@ public class BitmapUtils {
     }
 
     /**
-     * @param base64String base64 string
+     * @param base64 base64 string
      * @return bitmap
      */
-    public static Bitmap base64String2Bitmap(String base64String) {
-        byte[] bytes = Base64.decode(base64String, Base64.DEFAULT);
-        return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+    public static Bitmap base64ToBitmap(String base64) {
+        if (base64.startsWith("data:")) {
+            base64 = base64.substring(base64.indexOf(",") + 1);
+        }
+        try {
+            byte[] bytes = Base64.decode(base64, Base64.DEFAULT);
+            return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        } catch (IllegalArgumentException e) {
+            return null;
+        }
+    }
+
+    /**
+     * @param bitmap bitmap
+     * @return base64 string
+     */
+    public static String bitmap2Base64(Bitmap bitmap) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+        byte[] bytes = outputStream.toByteArray();
+        IoUtils.close(outputStream);
+        return Base64.encodeToString(bytes, Base64.DEFAULT);
+    }
+
+    /**
+     * @param drawable drawable
+     * @return bitmap
+     */
+    public static String drawable2Base64(Drawable drawable) {
+        Bitmap bitmap = drawable2Bitmap(drawable);
+        return bitmap2Base64(bitmap);
     }
 
     /**

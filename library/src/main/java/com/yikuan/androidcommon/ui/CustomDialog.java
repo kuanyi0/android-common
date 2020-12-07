@@ -152,7 +152,7 @@ public class CustomDialog extends BaseDialog {
     private void setImage(ImageView imageView, Object value) {
         if (value instanceof Drawable) {
             imageView.setImageDrawable((Drawable) value);
-        } else if(value instanceof Bitmap){
+        } else if (value instanceof Bitmap) {
             imageView.setImageBitmap((Bitmap) value);
         } else if (value instanceof Integer) {
             imageView.setImageResource((Integer) value);

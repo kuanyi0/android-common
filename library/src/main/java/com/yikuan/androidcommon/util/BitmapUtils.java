@@ -42,8 +42,8 @@ public class BitmapUtils {
     }
 
     /**
-     * @param view view maybe not show
-     * @param width bitmap width
+     * @param view   view maybe not show
+     * @param width  bitmap width
      * @param height bitmap height
      * @return bitmap
      */
@@ -74,7 +74,7 @@ public class BitmapUtils {
     }
 
     /**
-     * @param base64String Base64 string
+     * @param base64String base64 string
      * @return bitmap
      */
     public static Bitmap base64String2Bitmap(String base64String) {
@@ -84,7 +84,7 @@ public class BitmapUtils {
 
     /**
      * @param bitmap bitmap
-     * @param path save path
+     * @param path   save path
      * @return {@code true} if success, {@code false} otherwise
      */
     public static boolean saveBitmap2Png(Bitmap bitmap, String path) {
@@ -93,7 +93,7 @@ public class BitmapUtils {
 
     /**
      * @param bitmap bitmap
-     * @param path save path
+     * @param path   save path
      * @return {@code true} if success, {@code false} otherwise
      */
     public static boolean saveBitmap2Jpeg(Bitmap bitmap, String path) {
@@ -102,7 +102,7 @@ public class BitmapUtils {
 
     /**
      * @param bitmap         bitmap
-     * @param path           Save path
+     * @param path           save path
      * @param compressFormat compress format
      * @param quality        compress quality, value is 0-100
      * @return {@code true} if success, {@code false} otherwise

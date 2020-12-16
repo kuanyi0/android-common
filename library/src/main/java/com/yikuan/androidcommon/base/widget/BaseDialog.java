@@ -4,12 +4,11 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Window;
+import android.view.WindowManager;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
-import com.yikuan.androidcommon.util.FloatingWindowManager;
 
 /**
  * @author yikuan
@@ -34,10 +33,14 @@ public abstract class BaseDialog extends Dialog {
         super.onCreate(savedInstanceState);
         Window window = getWindow();
         if (window != null) {
-            window.setType(FloatingWindowManager.getInstance().getType());
+            window.setType(getType());
         }
         setContentView(getLayoutRes());
         initView();
+    }
+
+    protected int getType() {
+        return WindowManager.LayoutParams.TYPE_APPLICATION;
     }
 
     @LayoutRes

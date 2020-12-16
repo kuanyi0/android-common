@@ -18,6 +18,7 @@ import com.yikuan.androidcommon.base.widget.BaseDialog;
  * @date 2020/01/10
  */
 public class CustomDialog extends BaseDialog {
+    private int mType;
     private int mLayoutRes;
     private View[] mViews;
     private int[] mIds;
@@ -35,6 +36,14 @@ public class CustomDialog extends BaseDialog {
 
     protected CustomDialog(@NonNull Context context, boolean cancelable, @Nullable OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
+    }
+
+    @Override
+    protected int getType() {
+        if (mType != 0) {
+            return mType;
+        }
+        return super.getType();
     }
 
     @Override
@@ -93,6 +102,10 @@ public class CustomDialog extends BaseDialog {
         } else if (view instanceof ImageView) {
             setImage((ImageView) view, value);
         }
+    }
+
+    public void setType(int type) {
+        mType = type;
     }
 
     public void setLayoutRes(@LayoutRes int layoutRes) {

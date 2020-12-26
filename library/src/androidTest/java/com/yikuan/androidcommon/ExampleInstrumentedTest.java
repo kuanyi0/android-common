@@ -64,6 +64,6 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void testBitmapUtils() {
-        BitmapUtils.base64String2Bitmap("");
+        BitmapUtils.base64ToBitmap("");
     }
 }

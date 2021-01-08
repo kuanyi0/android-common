@@ -5,7 +5,7 @@
 Gradle:
 
 ```
-implementation 'com.kimyi:android-common:0.2.8'
+implementation 'com.kimyi:android-common:0.2.9'
 ```
 
 
@@ -25,3 +25,12 @@ class App : Application() {
 }
 ```
 
+## Feature
+
+- base
+	- mvp: BaseView, BasePresenter
+	- mvp2: BaseActivity, BaseFragment, BasePresenter
+	- observe: BaseObservable, BaseObserver, BaseObserveManager
+	- widget: BaseDialog, BaseLayout, BaseBindingLayout, BaseLifecycleBindingLayout, BaseComponentLayout
+- ui: CustomDialog, MovableLayout...
+- util: BitmapUtils, CrashHandler, DateUtils...

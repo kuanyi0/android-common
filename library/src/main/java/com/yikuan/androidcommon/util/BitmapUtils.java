@@ -61,6 +61,14 @@ public class BitmapUtils {
 
     /**
      * @param drawable drawable
+     * @return byte array
+     */
+    public static byte[] drawable2Bytes(Drawable drawable) {
+        return bitmap2bytes(drawable2Bitmap(drawable));
+    }
+
+    /**
+     * @param drawable drawable
      * @return bitmap
      */
     public static Bitmap drawable2Bitmap(Drawable drawable) {
@@ -88,6 +96,18 @@ public class BitmapUtils {
         } catch (IllegalArgumentException e) {
             return null;
         }
+    }
+
+    /**
+     * @param bitmap bitmap
+     * @return byte array
+     */
+    public static byte[] bitmap2bytes(Bitmap bitmap) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+        byte[] bytes = outputStream.toByteArray();
+        IoUtils.close(outputStream);
+        return bytes;
     }
 
     /**
